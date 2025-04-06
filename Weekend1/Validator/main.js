@@ -37,8 +37,8 @@ const validator = ({ name, email, age }) => {
 
 
 const obj = {
-    name: "ss",
-    email: "abcs@gmail.com",
-    age: 18
+    name: "",
+    email: "abcsgmail.com",
+    age: 10
 }
 validator(obj)

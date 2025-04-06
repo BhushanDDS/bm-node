@@ -26,4 +26,4 @@ const getData = async(userId) => {
     }
 }
 
-getData();
+getData(2);
