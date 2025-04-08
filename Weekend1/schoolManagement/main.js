@@ -111,7 +111,6 @@ const classrooms = classNames.map((name, i) => {
     return classroom;
 });
 
-
 const students = studentNames.map(name => new Student(name));
 
 
