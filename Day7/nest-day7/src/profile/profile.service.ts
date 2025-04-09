@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { error } from 'console';
+import { AuthService } from 'src/auth/auth.service';
 import { ProfileDto } from 'src/dto/ProfileDto';
 import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class ProfileService {
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private authservices:AuthService) {}
+    
 
     private Porfile=[ {
       userId: 1,
@@ -21,6 +24,11 @@ export class ProfileService {
         if(!user){
             return  `User Does Not Exists`
         }
+        const verified:boolean=this.authservices.isVarified(profile.userId);
+        if(!verified){
+          return  `User Does Not Verified`
+        }
+    
 
         const newProfile={
             userId:profile.userId,
