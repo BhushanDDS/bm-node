@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post,Headers } from '@nestjs/common';
 import { Timeout } from 'src/commons/decorators/timeout.decorator';
 import { IsEven } from 'src/commons/pipes/iseven.pipe';
+import { CreateEmploymentDto } from 'src/dto/createEmpDto';
 import { CreateUserDto } from 'src/dto/createUserDto';
 import { CustomValidatorDto } from 'src/dto/customValDto';
 
@@ -52,6 +53,25 @@ export class UserController {
         return `about posted succesfully`
     }
 
-
+    @Post('employment')
+    createEmployment(
+      @Body() body: CreateEmploymentDto,
+      @Headers('x-country-code') countryCode: string,
+    ) {
+      // Attach the country code to the request body
+      if (body.contractorDetails) {
+        body.contractorDetails.headers = {
+          'x-country-code': countryCode || 'US', // Default to US if no country code
+        };
+      }
     
+      return {
+        message: 'Valid payload received!',
+        data: body,
+      };
+    }
+
+  
+  
+
 }
