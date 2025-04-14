@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post,Headers } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post,Headers, UseInterceptors } from '@nestjs/common';
 import { Timeout } from 'src/commons/decorators/timeout.decorator';
 import { DemoMeta } from 'src/commons/interceptors/demoMatadat';
 import { IsEven } from 'src/commons/pipes/iseven.pipe';
@@ -6,6 +6,7 @@ import { CreateEmploymentDto } from 'src/dto/createEmpDto';
 import { CreateUserDto } from 'src/dto/createUserDto';
 import { CustomValidatorDto } from 'src/dto/customValDto';
 import { UserService } from './user.service';
+import { LoggerInterseptor } from 'src/commons/interceptors/Loogr.interceptor';
 
 @Controller('user')
 export class UserController {
@@ -77,8 +78,10 @@ export class UserController {
 
 
 
-    @Get()
+    @Get('interseptlogger')
+    @UseInterceptors(LoggerInterseptor)
     testInterceptor(){
+      
       return this.userservice.sendResponse();
     }
   

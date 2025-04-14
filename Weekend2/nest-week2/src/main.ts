@@ -9,7 +9,7 @@ import { LoggerInterseptor } from './commons/interceptors/Loogr.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useGlobalInterceptors(new TimeoutInterceptor(new Reflector()),new LoggerInterseptor(new Reflector()));
+  app.useGlobalInterceptors(new TimeoutInterceptor(new Reflector()));
   // app.useGlobalPipes(
   //   new ValidationPipe({
   //     whitelist: true,
