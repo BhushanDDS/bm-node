@@ -1,5 +1,5 @@
 // is-future-date.ts
-import { ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
+import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
 @ValidatorConstraint({ name: 'IsFutureDate', async: false })
 export class IsFutureDate implements ValidatorConstraintInterface {
@@ -10,4 +10,5 @@ export class IsFutureDate implements ValidatorConstraintInterface {
   defaultMessage() {
     return 'Joining date must be a future date';
   }
+ 
 }

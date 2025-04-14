@@ -13,6 +13,7 @@ import {
     registerDecorator,
     ValidationOptions,
     ValidationArguments,
+    ValidateIf,
   } from 'class-validator';
   import { Type } from 'class-transformer';
 import { IsFutureDate } from 'src/commons/validator/task8/is-future-date';
@@ -55,15 +56,16 @@ import { CrossEmploymentValidation } from 'src/commons/validator/task8/cross-emp
   }
   
   export class CreateEmploymentDto {
-    @IsEnum(['full-time', 'contractor'])
-    employmentType: 'full-time' | 'contractor';
   
-    @IsOptional()
+    @IsEnum(['full-time', 'contractor'])
+   employmentType: 'full-time' | 'contractor';
+   
+    @ValidateIf(o => o.employmentType === 'full-time')
     @ValidateNested()
     @Type(() => FullTimeDetails)
     fullTimeDetails?: FullTimeDetails;
   
-    @IsOptional()
+    @ValidateIf(o => o.employmentType === 'contractor')
     @ValidateNested()
     @Type(() => ContractorDetails)
     contractorDetails?: ContractorDetails;

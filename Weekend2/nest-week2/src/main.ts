@@ -5,10 +5,11 @@ import { TimeoutInterceptor } from './commons/decorators/timeout.interceptor';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { formatError } from './commons/utils/formaterror';
 import { validationExceptionFactory } from './commons/utils/validation-exception.factory';
+import { LoggerInterseptor } from './commons/interceptors/Loogr.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useGlobalInterceptors(new TimeoutInterceptor(new Reflector()));
+  app.useGlobalInterceptors(new TimeoutInterceptor(new Reflector()),new LoggerInterseptor(new Reflector()));
   // app.useGlobalPipes(
   //   new ValidationPipe({
   //     whitelist: true,

@@ -1,13 +1,16 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post,Headers } from '@nestjs/common';
 import { Timeout } from 'src/commons/decorators/timeout.decorator';
+import { DemoMeta } from 'src/commons/interceptors/demoMatadat';
 import { IsEven } from 'src/commons/pipes/iseven.pipe';
 import { CreateEmploymentDto } from 'src/dto/createEmpDto';
 import { CreateUserDto } from 'src/dto/createUserDto';
 import { CustomValidatorDto } from 'src/dto/customValDto';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
 
+  constructor(private userservice:UserService){}
 
     @Get(':id/role/:role')
     getByRole(@Param('id')id:number,@Param('role')role:string){
@@ -33,6 +36,7 @@ export class UserController {
 
 
     @Post('iseven/:number')
+    @DemoMeta(2)
     chkNumber(@Param('number' ,ParseIntPipe,IsEven)number:number){
         return `its even`;
         
@@ -71,6 +75,12 @@ export class UserController {
       };
     }
 
+
+
+    @Get()
+    testInterceptor(){
+      return this.userservice.sendResponse();
+    }
   
   
 
