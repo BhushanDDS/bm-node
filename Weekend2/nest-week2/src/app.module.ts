@@ -4,9 +4,10 @@ import { RateLimitMiddleware } from './commons/middleware/CountRequests.middlewa
 import { CartModule } from './cart/cart.module';
 import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UserModule, CartModule, OrderModule, PaymentModule]
+  imports: [UserModule, CartModule, OrderModule, PaymentModule, AuthModule]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

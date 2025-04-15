@@ -31,7 +31,7 @@ export class UserController {
     @Get('timeout')
     @Timeout(2000)
     async getTest(): Promise<string> {
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       return 'This will timeout';
     }
 

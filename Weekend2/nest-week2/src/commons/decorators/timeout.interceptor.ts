@@ -16,10 +16,12 @@ import {
   
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
       const delay = this.reflector.get<number>(TIMEOUT_KEY, context.getHandler());
+  console.log(delay);
   
       if (!delay) {
         return next.handle(); 
       }
+
   
       return next.handle().pipe(
         timeout(delay), 
