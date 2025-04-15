@@ -32,7 +32,7 @@ deleteArchiver(){
 
 
 @Get('get-admin')
-@Roles(Role.User)
+@Roles(Role.Admin)
 chkRole(){
     return `this role exists so we can go forward `
 }
