@@ -12,8 +12,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     database: 'nestapi',
     entities: [User], 
     synchronize: true, 
-    logging: ['query', 'error'], // enables all logs (query + error + schema + warn)
-    logger: 'advanced-console', // shows formatted logs
+    logging: ['query', 'error'], 
+    logger: 'advanced-console', 
   }),UserModule]
 })
 export class AppModule {}
