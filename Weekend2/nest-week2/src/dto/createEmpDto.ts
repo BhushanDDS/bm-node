@@ -33,7 +33,7 @@ import { CrossEmploymentValidation } from 'src/commons/validator/task8/cross-emp
     @Type(()=>Date)
     joiningDate: Date;
   }
-  
+  //extend partial 
   export class ContractorDetails {
     @IsDate()
     @Type(() => Date) 

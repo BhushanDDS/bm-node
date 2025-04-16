@@ -13,6 +13,8 @@ export class UserController {
 
   constructor(private userservice:UserService){}
 
+
+
     @Get(':id/role/:role')
     getByRole(@Param('id')id:number,@Param('role')role:string){
         try {
@@ -29,6 +31,7 @@ export class UserController {
     }
 
     @Get('timeout')
+    //@UseInterceptors()
     @Timeout(2000)
     async getTest(): Promise<string> {
       await new Promise(resolve => setTimeout(resolve, 1000));
