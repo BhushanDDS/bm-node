@@ -9,7 +9,7 @@ import {
   import { Request } from 'express';
   
   @Injectable()
-  export class DoctorGuard implements CanActivate {
+  export class AuthGuard implements CanActivate {
     constructor(private jwtService: JwtService) {}
   
     async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -20,26 +20,12 @@ import {
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         throw new UnauthorizedException('No token provided');
       }
-  
-      const token = authHeader.split(' ')[1];
-  
-      try {
-        const payload = await this.jwtService.verifyAsync(token);
-        console.log(payload);
 
-      
-        const hasDoctorRole = payload.role.includes('doctor') || payload.role.includes('Doctor');
-
-        if (!hasDoctorRole) {
-          throw new ForbiddenException('Access denied. Not a doctor');
-        }
         
-        
-
         return true;
       } catch (err) {
         throw new UnauthorizedException('Invalid or expired token');
       }
     }
-  }
+  
   

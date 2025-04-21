@@ -14,9 +14,13 @@ import { Dosage } from './dosage/dosage.entity';
 import { WorkingHours } from './working-hours/workinghours.entity';
 import { Prescription } from './prescription/prescription.entity';
 import { MedicalHistory } from './medical-history/medicalhistory.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+  }), 
+      TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
