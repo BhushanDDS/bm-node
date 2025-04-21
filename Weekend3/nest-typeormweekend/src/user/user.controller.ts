@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { SighnUpDto } from './dto/signup.user';
 import { sign } from 'crypto';
@@ -63,6 +63,11 @@ export class UserController {
       }
 
     
+     
 
+      @Get('get-all')
+    getAllUsers(){
 
+        return this.userservices.getAllUsers();
+    }
 }

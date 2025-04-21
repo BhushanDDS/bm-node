@@ -94,6 +94,13 @@ async refreshToken(oldRefreshToken: string) {
       throw new UnauthorizedException('Invalid refresh token');
     }
   }
+
+
+  async getAllUsers(){
+
+    const users = await this.userrepo.find();
+    return users;
+  }
 }
 
 
