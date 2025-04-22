@@ -76,7 +76,7 @@ export class AppointmentService {
         order: {
           date: 'DESC',
         },
-        relations: ['patient', 'doctor'],
+        relations: ['patient.firstname', 'doctor.firstname'],
       });
       
     return sortedAppointments;
