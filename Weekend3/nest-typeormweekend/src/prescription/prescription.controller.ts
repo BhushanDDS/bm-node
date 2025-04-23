@@ -29,17 +29,11 @@ export class PrescriptionController {
             path2: `/uploads/${files.background[0].filename}`,
           };
     }
-    
-
-
 
     @Post('upload/array')
     @UseInterceptors(FilesInterceptor('files'))
     uploadFile3(@UploadedFiles() files: Array<Express.Multer.File>) {
-
         return {
-
-
             filenames: files.map(file => file.filename),
             paths: files.map(file => `/uploads/${file.filename}`)
         }

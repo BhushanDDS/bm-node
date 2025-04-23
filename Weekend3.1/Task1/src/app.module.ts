@@ -14,7 +14,7 @@ import { Borrow } from './borrow/borrow.entity';
     port: 3306,
     username: 'root',
     password: 'NewPassword',
-    database: 'medcare',
+    database: 'week3task1',
     entities: [Book,Member,Borrow], 
     synchronize: true, 
     logging: ['query', 'error'], 
